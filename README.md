@@ -1,2 +1,2 @@
 # Zulu-Bot
-This is Zulu bot, Zulu is a discord bot written in python.
+This is Zulu bot, Zulu is a (very WIP) discord bot written in python.
