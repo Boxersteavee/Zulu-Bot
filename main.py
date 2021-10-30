@@ -28,6 +28,7 @@ async def on_ready():
 async def on_command_error(ctx, error):
      if isinstance(error, commands.CommandNotFound):
       NotFound = discord.Embed(
+zulu.run("ODc0MDEyMDg5NzA0OTA2NzUz.YRAxMA.iu6ee1kre4GCqigvTTD1f2gCTgI"
             title = 'I use slash commands now',
             description = 'I have evolved with discord, i no longer use prefix commands as discord have made a new fancy feature called slash commands, press the `/` key see!',
             colour = discord.Colour.blue()
@@ -71,6 +72,7 @@ async def help(ctx):
     await ctx.respond(f"Hello <@{ctx.author.id}>!,", embed=helpembed)
 
 @zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])  # create a slash command for the supplied guilds
+zulu.run("ODc0MDEyMDg5NzA0OTA2NzUz.YRAxMA.iu6ee1kre4GCqigvTTD1f2gCTgI"
 async def hello(ctx):
     """Say hello to the bot"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello {ctx.author}!")
@@ -102,4 +104,4 @@ async def srvstatus(
 
 
 
-zulu.run("ODc0MDEyMDg5NzA0OTA2NzUz.YRAxMA.iu6ee1kre4GCqigvTTD1f2gCTgI")
+zulu.run(token)
