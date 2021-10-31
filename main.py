@@ -9,12 +9,13 @@ import discord
 import os
 import random
 import requests
+from dotenv import load_dotenv
 
 from discord.ext.commands.errors import BadLiteralArgument
 
 #TOKEN = os.environ['TOKEN']
 
-    
+load_dotenv()
 
 zulu = commands.Bot(command_prefix = 'z.')
 
@@ -24,33 +25,33 @@ async def on_ready():
     print('{0.user} is ready'.format(zulu))
     
 
-# @zulu.event
-# async def on_command_error(ctx, error):
-#      if isinstance(error, commands.CommandNotFound):
-#       NotFound = discord.Embed(
-#             title = 'I use slash commands now',
-#             description = 'I have evolved with discord, i no longer use prefix commands as discord have made a new fancy feature called slash commands, press the `/` key see!',
-#             colour = discord.Colour.blue()
+@zulu.event
+async def on_command_error(ctx, error):
+     if isinstance(error, commands.CommandNotFound):
+      NotFound = discord.Embed(
+            title = 'I use slash commands now',
+            description = 'I have evolved with discord, i no longer use prefix commands as discord have made a new fancy feature called slash commands, press the `/` key see!',
+            colour = discord.Colour.blue()
 
-#       )
-#       NotFound.set_footer(text='I am the best discord bot, you cannot change my mind as i was coded to say this.')
+      )
+      NotFound.set_footer(text='I am the best discord bot, you cannot change my mind as i was coded to say this.')
 
 
-#       await ctx.send(embed=NotFound)
-#       if isinstance(error, commands.MissingPermissions):
-#         NoPerms = discord.Embed(
-#             title = 'No permissions!',
-#             description = 'You do not have permission to do that command!',
-#             colour = discord.Colour.red()
+      await ctx.send(embed=NotFound)
+      if isinstance(error, commands.MissingPermissions):
+        NoPerms = discord.Embed(
+            title = 'No permissions!',
+            description = 'You do not have permission to do that command!',
+            colour = discord.Colour.red()
 
-#         )
-#         NoPerms.set_footer(text='You can\'t do that command')
-#         NoPerms.set_author(name='You need Permission to run that command.')
-#         await ctx.send(embed=NoPerms)
-#       if isinstance(error, UnboundLocalError):
-#         return
-#       else:
-#         raise error
+        )
+        NoPerms.set_footer(text='You can\'t do that command')
+        NoPerms.set_author(name='You need Permission to run that command.')
+        await ctx.send(embed=NoPerms)
+      if isinstance(error, UnboundLocalError):
+        return
+      else:
+        raise error
 
 #embed for help command.
 helpembed = discord.Embed(
@@ -132,5 +133,5 @@ async def srvstatus(
       finalrespondon.add_field(name='Player Count', value=f"`{API_Response['players']}`", inline=True)
       await interaction.edit_original_message(embed=finalrespondon)
 
-zulu.run(token)
+zulu.run(os.getenv("TOKEN"))
 
