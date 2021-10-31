@@ -24,34 +24,33 @@ async def on_ready():
     print('{0.user} is ready'.format(zulu))
     
 
-@zulu.event
-async def on_command_error(ctx, error):
-     if isinstance(error, commands.CommandNotFound):
-      NotFound = discord.Embed(
-zulu.run("ODc0MDEyMDg5NzA0OTA2NzUz.YRAxMA.iu6ee1kre4GCqigvTTD1f2gCTgI"
-            title = 'I use slash commands now',
-            description = 'I have evolved with discord, i no longer use prefix commands as discord have made a new fancy feature called slash commands, press the `/` key see!',
-            colour = discord.Colour.blue()
+# @zulu.event
+# async def on_command_error(ctx, error):
+#      if isinstance(error, commands.CommandNotFound):
+#       NotFound = discord.Embed(
+#             title = 'I use slash commands now',
+#             description = 'I have evolved with discord, i no longer use prefix commands as discord have made a new fancy feature called slash commands, press the `/` key see!',
+#             colour = discord.Colour.blue()
 
-      )
-      NotFound.set_footer(text='I am the best discord bot, you cannot change my mind as i was coded to say this.')
+#       )
+#       NotFound.set_footer(text='I am the best discord bot, you cannot change my mind as i was coded to say this.')
 
 
-      await ctx.send(embed=NotFound)
-      if isinstance(error, commands.MissingPermissions):
-        NoPerms = discord.Embed(
-            title = 'No permissions!',
-            description = 'You do not have permission to do that command!',
-            colour = discord.Colour.red()
+#       await ctx.send(embed=NotFound)
+#       if isinstance(error, commands.MissingPermissions):
+#         NoPerms = discord.Embed(
+#             title = 'No permissions!',
+#             description = 'You do not have permission to do that command!',
+#             colour = discord.Colour.red()
 
-        )
-        NoPerms.set_footer(text='You can\'t do that command')
-        NoPerms.set_author(name='You need Permission to run that command.')
-        await ctx.send(embed=NoPerms)
-      if isinstance(error, UnboundLocalError):
-        return
-      else:
-        raise error
+#         )
+#         NoPerms.set_footer(text='You can\'t do that command')
+#         NoPerms.set_author(name='You need Permission to run that command.')
+#         await ctx.send(embed=NoPerms)
+#       if isinstance(error, UnboundLocalError):
+#         return
+#       else:
+#         raise error
 
 #embed for help command.
 helpembed = discord.Embed(
@@ -72,7 +71,6 @@ async def help(ctx):
     await ctx.respond(f"Hello <@{ctx.author.id}>!,", embed=helpembed)
 
 @zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])  # create a slash command for the supplied guilds
-zulu.run("ODc0MDEyMDg5NzA0OTA2NzUz.YRAxMA.iu6ee1kre4GCqigvTTD1f2gCTgI"
 async def hello(ctx):
     """Say hello to the bot"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello {ctx.author}!")
@@ -99,9 +97,40 @@ async def srvstatus(
 ):
     r = requests.get(f'https://api.mcsrvstat.us/2/{ip}')
     server_json = r.json()
+    temprespond = discord.Embed(
+      title = f'Loading Status for {ip}'
+    )
 
-    await ctx.respond(embed=temprespond)
+    interaction = await ctx.respond(embed=temprespond)
+    
+    
+    r = requests.get(f'https://api.mcsrvstat.us/2/{ip}')
 
+    API_Response = r.json()
 
+    if API_Response["online"] == False:
+      finalrespond = discord.Embed(
+      title = f'Status of {ip}'
+      )
+      finalrespond.set_footer(text='This is the best discord bot')
+      finalrespond.add_field(name='IP', value=f"`{API_Response['ip']}`", inline=True)
+      finalrespond.add_field(name='Port', value=f"`{API_Response['port']}`", inline=True)
+      finalrespond.add_field(name='Online', value=f"`{API_Response['online']}`", inline=True)
+      finalrespond.add_field(name='Hostname', value=f"`{API_Response['hostname']}`", inline=True)
+      await interaction.edit_original_message(embed=finalrespond)
+
+    else:
+      finalrespondon = discord.Embed(
+      title = f'Status of {ip}'
+      )
+      finalrespondon.set_footer(text='This is the best discord bot')
+      finalrespondon.add_field(name='IP', value=f"`{API_Response['ip']}`", inline=True)
+      finalrespondon.add_field(name='Port', value=f"`{API_Response['port']}`", inline=True)
+      finalrespondon.add_field(name='Online', value=f"`{API_Response['online']}`", inline=True)
+      finalrespondon.add_field(name='Hostname', value=f"`{API_Response['hostname']}`", inline=True)
+      finalrespondon.add_field(name='Version', value=f"`{API_Response['version']}`", inline=True)
+      finalrespondon.add_field(name='Player Count', value=f"`{API_Response['players']}`", inline=True)
+      await interaction.edit_original_message(embed=finalrespondon)
 
 zulu.run(token)
+
