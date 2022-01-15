@@ -113,7 +113,7 @@ async def srvstatus(
       finalrespond = discord.Embed(
       title = f'Status of {ip}'
       )
-      finalrespond.set_footer(text='This is the best discord bot')
+      finalrespond.set_footer(text='Information from https://api.mcsrvstat.us')
       finalrespond.add_field(name='IP', value=f"`{API_Response['ip']}`", inline=True)
       finalrespond.add_field(name='Port', value=f"`{API_Response['port']}`", inline=True)
       finalrespond.add_field(name='Online', value=f"`{API_Response['online']}`", inline=True)
@@ -124,7 +124,7 @@ async def srvstatus(
       finalrespondon = discord.Embed(
       title = f'Status of {ip}'
       )
-      finalrespondon.set_footer(text='This is the best discord bot')
+      finalrespondon.set_footer(text='Information from https://api.mcsrvstat.us')
       finalrespondon.add_field(name='IP', value=f"`{API_Response['ip']}`", inline=True)
       finalrespondon.add_field(name='Port', value=f"`{API_Response['port']}`", inline=True)
       finalrespondon.add_field(name='Online', value=f"`{API_Response['online']}`", inline=True)
