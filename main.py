@@ -131,7 +131,7 @@ async def srvstatus(
       finalrespondon.add_field(name='Hostname', value=f"`{API_Response['hostname']}`", inline=True)
       finalrespondon.add_field(name='Version', value=f"`{API_Response['version']}`", inline=True)
       finalrespondon.add_field(name='Player Count', value=f"`{API_Response['players']['online']}/{API_Response['players']['max']} `", inline=True)
-      inalrespondon.add_field(name='MOTD', value=f"`{API_Response['motd']}/{API_Response['clean']} `", inline=True)
+      inalrespondon.add_field(name='MOTD', value=f"`{API_Response['motd']['clean']} `", inline=True)
       await interaction.edit_original_message(embed=finalrespondon)
 
 zulu.run(os.getenv("TOKEN"))
