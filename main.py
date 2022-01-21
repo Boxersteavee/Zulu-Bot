@@ -143,9 +143,6 @@ async def hug(ctx):
     hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
     #hugembed.set_image(url="attachment://hug.gif")
     await ctx.respond(hugembed)
-  
-@zulu.command
-
 
 zulu.run(os.getenv("TOKEN"))
 
