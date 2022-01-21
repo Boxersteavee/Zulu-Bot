@@ -138,11 +138,14 @@ async def srvstatus(
 async def hug(ctx):
     r = requests.get(f'https://nekos.life/api/v2/img/hug')
     hug_json = r.json()
-    file = discord.File({hug+json['url']}, filename="hug.gif")
+    file = discord.File({hug_json['url']}, filename="hug.gif")
     hugembed=discord.Embed(title="Have a hug", description="you need it", color=0xff0000)
     hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
     hugembed.set_image(url="attachment://hug.gif")
     await ctx.respond(hugembed)
+  
+@zulu.command
+
 
 zulu.run(os.getenv("TOKEN"))
 
