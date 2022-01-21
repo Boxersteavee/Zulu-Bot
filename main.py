@@ -134,5 +134,15 @@ async def srvstatus(
       finalrespondon.add_field(name='MOTD', value=f"`{API_Response['motd']['clean']} `", inline=True)
       await interaction.edit_original_message(embed=finalrespondon)
 
+@zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])
+async def hug(ctx):
+    r = requests.get(f'https://nekos.life/api/v2/img/hug')
+    hug_json = r.json()
+    file = discord.File({hug+json['url']}, filename="hug.gif")
+    hugembed=discord.Embed(title="Have a hug", description="you need it", color=0xff0000)
+    hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
+    hugembed.set_image(url="attachment://hug.gif")
+  await ctx.respond(hugembed)
+
 zulu.run(os.getenv("TOKEN"))
 
