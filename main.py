@@ -142,7 +142,7 @@ async def hug(ctx):
     hugembed=discord.Embed(title="Have a hug", description="you need it", color=0xff0000)
     hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
     hugembed.set_image(url="attachment://hug.gif")
-  await ctx.respond(hugembed)
+    await ctx.respond(hugembed)
 
 zulu.run(os.getenv("TOKEN"))
 
