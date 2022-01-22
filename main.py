@@ -68,19 +68,22 @@ helpembed.set_author(name='ZuluBot commands:')
 helpembed.add_field(name='Ping!', value='Shows the ping of the bot')
 helpembed.add_field(name='Help', value='Shows this command.')
 
-@zulu.slash_command(guild_ids=[guild_ids=test_servers])  # create a slash command for the supplied guilds
+@zulu.slash_command(guild_ids=[test_servers])  # create a slash command for the supplied guilds
 async def help(ctx):
+    await ctx.defer()
     """Sends the help command"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello <@{ctx.author.id}>!,", embed=helpembed)
 
-@zulu.slash_command(guild_ids=[guild_ids=test_servers])  # create a slash command for the supplied guilds
+@zulu.slash_command(guild_ids=test_servers])  # create a slash command for the supplied guilds
 async def hello(ctx):
+    await ctx.defer()
     """Say hello to the bot"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello {ctx.author}!")
 
 
-@zulu.slash_command(guild_ids=[guild_ids=test_servers])
+@zulu.slash_command(guild_ids=[test_servers])
 async def ping(ctx):
+  await ctx.defer()
   pingtime = round(zulu.latency * 1000)
   pingembed = discord.Embed(
   title = 'Pong!',
