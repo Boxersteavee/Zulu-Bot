@@ -19,6 +19,8 @@ load_dotenv()
 
 zulu = commands.Bot(command_prefix = 'z.')
 
+test_servers = [764981968579461130, 798180194049196032]
+
 @zulu.event
 async def on_ready():
     await zulu.change_presence(activity=discord.Game(name="z.cmds for a list of commands."))
@@ -66,18 +68,18 @@ helpembed.set_author(name='ZuluBot commands:')
 helpembed.add_field(name='Ping!', value='Shows the ping of the bot')
 helpembed.add_field(name='Help', value='Shows this command.')
 
-@zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])  # create a slash command for the supplied guilds
+@zulu.slash_command(guild_ids=[guild_ids=test_servers])  # create a slash command for the supplied guilds
 async def help(ctx):
     """Sends the help command"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello <@{ctx.author.id}>!,", embed=helpembed)
 
-@zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])  # create a slash command for the supplied guilds
+@zulu.slash_command(guild_ids=[guild_ids=test_servers])  # create a slash command for the supplied guilds
 async def hello(ctx):
     """Say hello to the bot"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello {ctx.author}!")
 
 
-@zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])
+@zulu.slash_command(guild_ids=[guild_ids=test_servers])
 async def ping(ctx):
   pingtime = round(zulu.latency * 1000)
   pingembed = discord.Embed(
