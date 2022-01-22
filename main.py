@@ -143,4 +143,3 @@ async def hug(ctx):
     await ctx.respond(embed=hugembed)
 
 zulu.run(os.getenv("TOKEN"))
-
