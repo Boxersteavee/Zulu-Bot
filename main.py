@@ -91,13 +91,11 @@ async def ping(ctx):
  
   await ctx.respond(embed=pingembed)
     
-@zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])
+@zulu.slash_command()
 async def srvstatus(
     ctx,
     ip: Option(str, "Enter the server IP", required=True),
 ):
-    r = requests.get(f'https://api.mcsrvstat.us/2/{ip}')
-    server_json = r.json()
     temprespond = discord.Embed(
       title = f'Loading Status for {ip}'
     )
@@ -134,15 +132,15 @@ async def srvstatus(
       finalrespondon.add_field(name='MOTD', value=f"`{API_Response['motd']['clean']} `", inline=True)
       await interaction.edit_original_message(embed=finalrespondon)
 
-@zulu.slash_command(guild_ids=[798180194049196032, 764981968579461130])
+@zulu.slash_command()
 async def hug(ctx):
-    #r = requests.get(f'https://nekos.life/api/v2/img/hug')
-    #hug_json = r.json()
-    #file = discord.File({hug_json['url']}, filename="hug.gif")
+    await ctx.defer()
+    r = requests.get(f'https://nekos.life/api/v2/img/hug')
+    hug_json = r.json()
     hugembed=discord.Embed(title="Have a hug", description="you need it", color=0xff0000)
     hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
-    #hugembed.set_image(url="attachment://hug.gif")
-    await ctx.respond(hugembed)
+    hugembed.set_image(url=f"{hug_json['url']}")
+    await ctx.respond(embed=hugembed)
 
 zulu.run(os.getenv("TOKEN"))
 
