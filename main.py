@@ -152,7 +152,8 @@ async def hug(ctx,
     if member is None:
       await ctx.respond(embed=hugembed)
     else:
-      await ctx.respond(f"{member.mention}, {ctx.author} gave you huggies because {reason}", embed=hugembed)
+      await ctx.send(f"{member.mention}, {ctx.author} gave you a huggy because {reason}")
+      await ctx.respond(embed=hugembed)
 
 
 zulu.run(os.getenv("TOKEN"))
