@@ -10,6 +10,7 @@ import os
 import random
 import requests
 from dotenv import load_dotenv
+import time
 
 from discord.ext.commands.errors import BadLiteralArgument
 
@@ -153,6 +154,7 @@ async def hug(ctx,
       await ctx.respond(embed=hugembed)
     else:
       await ctx.send(f"{member.mention}, {ctx.author} gave you a huggy because {reason}")
+      time.sleep(0.1)
       await ctx.respond(embed=hugembed)
 
 
