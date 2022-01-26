@@ -154,7 +154,7 @@ async def hug(ctx,
       await ctx.respond(embed=hugembed)
     else:
       await ctx.send(f"{member.mention}, {ctx.author} gave you a huggy because {reason}")
-      time.sleep(0.1)
+      time.sleep(0.5)
       await ctx.respond(embed=hugembed)
 
 
