@@ -79,7 +79,7 @@ async def help(ctx):
 async def hello(ctx):
     await ctx.defer()
     """Say hello to the bot"""  # the command description can be supplied as the docstring
-    await ctx.respond(f"Hello <@{ctx.author.id}>!")
+    await ctx.respond(f"Hello {ctx.author.mention}!")
 
 
 @zulu.slash_command(guild_ids=test_servers)
