@@ -136,6 +136,7 @@ async def srvstatus(
       finalrespondon.add_field(name='Version', value=f"`{API_Response['version']}`", inline=True)
       finalrespondon.add_field(name='Player Count', value=f"`{API_Response['players']['online']}/{API_Response['players']['max']} `", inline=True)
       finalrespondon.add_field(name='MOTD', value=f"`{API_Response['motd']['clean']} `", inline=True)
+      finalrespondon.set_image(url=f"https://api.mcsrvstat.us/icon/{ip}")
       await interaction.edit_original_message(embed=finalrespondon)
 
 @zulu.slash_command(guild_ids=test_servers)
