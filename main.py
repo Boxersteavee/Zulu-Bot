@@ -143,18 +143,18 @@ async def srvstatus(
 async def hug(ctx,
               member: discord.commands.Option(discord.Member, 'Who you wanna hug', required=False) = None,
               reason: discord.commands.Option(str, 'Why you want to hug them', required=False) = None):
-    if reason is None:
-      reason = "You need it!"
     await ctx.defer()
     r = requests.get(f'https://nekos.life/api/v2/img/hug')
     hug_json = r.json()
     hugembed=discord.Embed(title="Have a hug", description=("You need it"), color=0xff0000)
     hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
     hugembed.set_image(url=f"{hug_json['url']}")
+    if reason is None:
+      reason = "You need it!"
     if member is None:
       await ctx.respond(embed=hugembed)
     else:
-      await ctx.respond(f"{member.mention}, has given you a hug, {reason}", embed=embed)
+      await ctx.send(f"{member.mention}, has given you a hug, {reason}", embed=embed)
 
 
 
