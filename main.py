@@ -152,9 +152,9 @@ async def hug(ctx,
     if reason is None:
       reason = "You need it!"
     elif member is None:
-      await ctx.respond(embed=hugembed)
+      await ctx.respond(f"Whoever you are, have a hug {reason}", embed=hugembed)
     else:
-      await ctx.respond(f"{member.mention}, has given you a hug, {reason}", embed=embed)
+      await ctx.respond(f"{member.mention}, have a hug, {reason}", embed=hugembed)
 
 
 
