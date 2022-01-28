@@ -141,8 +141,8 @@ async def srvstatus(
 
 @zulu.slash_command(guild_ids=test_servers)
 async def hug(ctx,
-              member: discord.commands.Option(discord.Member, 'Who you wanna hug', required=False) = None,
-              reason: discord.commands.Option(str, 'Why you want to hug them', required=False) = None):
+              member: discord.commands.Option(discord.Member, 'Who you wanna hug', required=False),
+              reason: discord.commands.Option(str, 'Why you want to hug them', required=False)):
     await ctx.defer()
     r = requests.get(f'https://nekos.life/api/v2/img/hug')
     hug_json = r.json()
