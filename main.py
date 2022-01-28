@@ -154,7 +154,7 @@ async def hug(ctx,
     if member is None:
       await ctx.respond(embed=hugembed)
     else:
-      await ctx.send(f"{member.mention}, has given you a hug, {reason}", embed=embed)
+      await ctx.respond(f"{member.mention}, has given you a hug, {reason}", embed=embed)
 
 
 
