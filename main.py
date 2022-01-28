@@ -153,8 +153,6 @@ async def hug(ctx,
     hugembed.set_image(url=f"{hug_json['url']}")
     if member is None:
       await ctx.respond(embed=hugembed)
-    elif reason is None:
-      await ctx.respond(f"{member.mention}, has given you a hug, you need it. :smiley:", embed=embed)  
     else:
       await ctx.respond(f"{member.mention}, has given you a hug, {reason}", embed=embed)
 
