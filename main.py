@@ -153,10 +153,11 @@ async def hug(ctx,
     hugembed.set_image(url=f"{hug_json['url']}")
     if member is None:
       await ctx.respond(embed=hugembed)
+    if reason is None:
+      await ctx.respond(f"{member.mention}, has given you a hug, you need it. :smiley:", embed=embed)  
     else:
-      await ctx.send(f"{member.mention}, {ctx.author} gave you a huggy because {reason}")
-      time.sleep(0.5)
-      await ctx.respond(embed=hugembed)
+      await ctx.respond(f"{member.mention}, has given you a hug, {reason}", embed=embed)
+
 
 
 zulu.run(os.getenv("TOKEN"))
