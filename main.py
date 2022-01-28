@@ -152,11 +152,11 @@ async def hug(ctx,
     hugembed.set_footer(text='Gif from https://nekos.life/api/v2/img/hug')
     hugembed.set_image(url=f"{hug_json['url']}")
     if member is None:
-      await ctx.send(embed=hugembed)
+      await ctx.respond(embed=hugembed)
     elif reason is None:
-      await ctx.send(f"{member.mention}, has given you a hug, you need it. :smiley:", embed=embed)  
+      await ctx.respond(f"{member.mention}, has given you a hug, you need it. :smiley:", embed=embed)  
     else:
-      await ctx.send(f"{member.mention}, has given you a hug, {reason}", embed=embed)
+      await ctx.respond(f"{member.mention}, has given you a hug, {reason}", embed=embed)
 
 
 
