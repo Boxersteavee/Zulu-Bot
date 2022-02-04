@@ -77,6 +77,7 @@ async def help(ctx):
 
 @zulu.slash_command(guild_ids=test_servers)  # create a slash command for the supplied guilds
 async def hello(ctx):
+    """:wave:"""
     await ctx.defer()
     """Say hello to the bot"""  # the command description can be supplied as the docstring
     await ctx.respond(f"Hello {ctx.author.mention}!")
@@ -85,6 +86,7 @@ async def hello(ctx):
 @zulu.slash_command(guild_ids=test_servers)
 async def ping(ctx):
   await ctx.defer()
+  """ping the discord API"""
   pingtime = round(zulu.latency * 1000)
   pingembed = discord.Embed(
   title = 'Pong!',
@@ -102,6 +104,7 @@ async def srvstatus(
     ctx,
     ip: Option(str, "Enter the server IP", required=True),
 ):
+    """Ping minecraft servers."""
     temprespond = discord.Embed(
       title = f'Loading Status for {ip}'
     )
@@ -143,6 +146,7 @@ async def srvstatus(
 async def hug(ctx,
               member: discord.commands.Option(discord.Member, 'Who you wanna hug', required=False),
               reason: discord.commands.Option(str, 'Why you want to hug them', required=False)):
+    """Hugggszzz!"""
     await ctx.defer()
     r = requests.get(f'https://nekos.life/api/v2/img/hug')
     hug_json = r.json()
