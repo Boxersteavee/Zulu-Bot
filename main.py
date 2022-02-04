@@ -25,7 +25,7 @@ test_servers = [764981968579461130, 798180194049196032]
 @zulu.event
 async def on_ready():
     await zulu.change_presence(activity=discord.Game(name="z.cmds for a list of commands."))
-    print('{0.user} is ready'.format(zulu))
+    print("Zulu is ready to rock 'n' roll.")
     
 
 @zulu.event
